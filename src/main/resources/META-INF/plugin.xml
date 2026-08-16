@@ -1,0 +1,60 @@
+<idea-plugin>
+    <id>es.bancamarch.flow</id>
+    <name>Banca March Flow</name>
+    <version>1.0-SNAPSHOT</version>
+    <vendor>Banca March</vendor>
+
+    <description><![CDATA[
+        Plugin para gestionar el Gitflow de Banca March.
+        Permite crear tareas (task, to-dev, to-test), actualizar ramas y cambiar entre ellas fácilmente.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectService serviceImplementation="es.bancamarch.flow.services.BancaMarchFlowService"/>
+        <statusBarWidgetFactory id="BancaMarchFlowWidget"
+                                implementation="es.bancamarch.flow.widget.FlowBranchWidgetFactory"
+                                order="after gitWidget"/>
+        <backgroundPostStartupActivity implementation="es.bancamarch.flow.listeners.BranchChangeStartupActivity"/>
+    </extensions>
+
+    <actions>
+        <group id="BancaMarchFlow.Toolbar" text="Banca March Flow" description="Banca March Gitflow actions">
+            <action id="BancaMarchFlow.NewTask"
+                    class="es.bancamarch.flow.actions.NewTaskAction"
+                    text="Nueva Tarea"
+                    description="Crear nueva tarea con ramas task, to-dev y to-test"
+                    icon="AllIcons.General.Add"/>
+            <action id="BancaMarchFlow.UpdateBranches"
+                    class="es.bancamarch.flow.actions.UpdateBranchesAction"
+                    text="Actualizar Ramas"
+                    description="Actualizar ramas mergeando desde master y task"
+                    icon="AllIcons.Actions.Refresh"/>
+            <action id="BancaMarchFlow.PushAll"
+                    class="es.bancamarch.flow.actions.PushAllBranchesAction"
+                    text="Push Todas"
+                    description="Push de las 3 ramas (task, to-dev, to-test)"
+                    icon="AllIcons.Actions.Deploy"/>
+            <action id="BancaMarchFlow.SwitchToTask"
+                    class="es.bancamarch.flow.actions.SwitchToTaskAction"
+                    text="Ir a Task"
+                    description="Cambiar a la rama task"
+                    icon="AllIcons.Nodes.HomeFolder"/>
+            <action id="BancaMarchFlow.SwitchToDev"
+                    class="es.bancamarch.flow.actions.SwitchToDevAction"
+                    text="Ir a To-Dev"
+                    description="Cambiar a la rama to-dev"
+                    icon="AllIcons.Toolwindows.ToolWindowBuild"/>
+            <action id="BancaMarchFlow.SwitchToTest"
+                    class="es.bancamarch.flow.actions.SwitchToTestAction"
+                    text="Ir a To-Test"
+                    description="Cambiar a la rama to-test"
+                    icon="AllIcons.Run.TestPassed"/>
+            <add-to-group group-id="MainToolbarRight" anchor="first"/>
+        </group>
+    </actions>
+</idea-plugin>
+
+
