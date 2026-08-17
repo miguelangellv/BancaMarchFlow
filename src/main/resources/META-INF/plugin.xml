@@ -36,7 +36,7 @@
                     class="es.bancamarch.flow.actions.PushAllBranchesAction"
                     text="Push Todas"
                     description="Push de las 3 ramas (task, to-dev, to-test)"
-                    icon="AllIcons.Actions.Deploy"/>
+                    icon="AllIcons.Vcs.Push"/>
             <action id="BancaMarchFlow.SwitchToTask"
                     class="es.bancamarch.flow.actions.SwitchToTaskAction"
                     text="Ir a Task"
@@ -51,7 +51,7 @@
                     class="es.bancamarch.flow.actions.SwitchToTestAction"
                     text="Ir a To-Test"
                     description="Cambiar a la rama to-test"
-                    icon="AllIcons.Run.TestPassed"/>
+                    icon="AllIcons.RunConfigurations.TestPassed"/>
             <add-to-group group-id="MainToolbarRight" anchor="first"/>
         </group>
     </actions>
